@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
            // var image = document.getElementById('myImage');
            // image.src = "data:image/jpeg;base64," + imageData;
 
-           //
+           $scope.image = "data:image/jpeg;base64," +imageData;
 
 
          }, function(err) {
