@@ -1,6 +1,12 @@
 {
   "name": "selfieStorm",
   "app_id": "2b2cc9aa",
+  "proxies" : [
+   {
+   "path": "/api",
+   "proxyUrl": "http://localhost:3000/api"
+   }
+  ],
   "gulpStartupTasks": [
     "sass",
     "watch"

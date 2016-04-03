@@ -1,23 +1,24 @@
 angular.module('starter.services', [])
 
-.factory('selfieService', function($http, $q){
+.factory('selfieService', function($http, $q, API_URL){
 
   function savePhoto(photo){
-     console.log('in service, photo received', photo);
+     console.log('1 in service, photo received', photo);
 
       var deferred = $q.defer();
 
-      $http.post('/api/photos', photo)
+      $http
+      .post(API_URL + '/api/photos', photo)
       .then(function(data){
 
-        console.log('in service, photo saved', data);
+        console.log('2 in service, photo saved', data);
 
         deferred.resolve(data);
       }, function(err){
         deferred.reject(err);
       });
 
-      console.log('in service, before returning promise', deferred);
+      console.log('3 in service, before returning promise', deferred);
       return deferred.promise;
   }
 
