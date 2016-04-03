@@ -1,8 +1,8 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope,$cordovaCamera) {
+.controller('DashCtrl', function($scope,$cordovaCamera, selfieService) {
 
-
+  $scope.newPhoto = {};
 
     $scope.takePhoto = function() {
       console.log('take a selfie');
@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
            // var image = document.getElementById('myImage');
            // image.src = "data:image/jpeg;base64," + imageData;
 
-           $scope.image = "data:image/jpeg;base64," +imageData;
+           $scope.newPhoto.image = "data:image/jpeg;base64," +imageData;
 
 
          }, function(err) {
@@ -36,7 +36,15 @@ angular.module('starter.controllers', [])
        }, false);
     }
 
+    $scope.savePhoto = function(){
+      console.log($scope.newPhoto);
 
+      selfieService.savePhoto($scope.newPhoto).then(function(data){
+        console.log('photo was saved', data);
+        // redirect
+      })
+
+    }
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
